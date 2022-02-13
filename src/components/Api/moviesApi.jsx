@@ -12,13 +12,11 @@ export function getIdMovies(moviesId) {
   return Api(`${BASE_URL}/movie/${moviesId}?api_key=${API_KEY}`);
 }
 export function getCast(moviesId) {
-  return Api(
-    `${BASE_URL}movie/${moviesId}/credits?api_key=${API_KEY}&language=en-US`
-  );
+  return Api(`${BASE_URL}/movie/${moviesId}/credits?api_key=${API_KEY}`);
 }
-export function getRewiew(moviesId) {
-  return Api(`${BASE_URL}movie/${moviesId}/reviews?api_key=${API_KEY}&page=1`);
+export function getReview(moviesId) {
+  return Api(`${BASE_URL}/movie/${moviesId}/reviews?api_key=${API_KEY}&page=1`);
 }
 export function getSearch(query) {
-  return Api(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}`);
+  return Api(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
 }
