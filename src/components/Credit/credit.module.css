@@ -1,0 +1,15 @@
+.actors {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+  font-weight: 500;
+  color: #2a363b;
+  font-size: 18px;
+}
+.actors li img {
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
+}

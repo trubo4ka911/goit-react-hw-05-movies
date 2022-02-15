@@ -1,11 +1,10 @@
 import { useEffect, useState, Suspense } from "react";
-import { getCast } from "../Api/moviesApi";
+import { getCast } from "../../Api/moviesApi";
 import { useParams } from "react-router-dom";
-import styles from "./views.module.css";
+import styles from "./credit.module.css";
 
 export default function MovieCreditView() {
   const [casts, setCast] = useState([]);
-
   const { movieId } = useParams();
 
   useEffect(() => {

@@ -85,21 +85,7 @@
 .contentLink:hover {
   color: #2196f3;
 }
-.actors {
-  display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  text-align: center;
-  font-weight: 500;
-  color: #2a363b;
-  font-size: 18px;
-}
-.actors li img {
-  width: 200px;
-  height: 300px;
-  object-fit: contain;
-}
+
 .goBack {
   padding: 7px 30px;
   border: none;
@@ -112,9 +98,4 @@
 }
 .goBack:hover {
   background: #465298;
-}
-/* Review */
-.review {
-  color: #2a363b;
-  list-style: none;
 }

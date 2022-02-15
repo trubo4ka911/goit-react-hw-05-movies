@@ -1,26 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useHistory, useLocation } from "react-router-dom";
 import { getIdMovies, getCast } from "../Api/moviesApi";
-import PageHeading from "../PageHeading/PageHeading";
+import PageHeading from "../components/PageHeading/PageHeading";
+import { toast } from "react-toastify";
 import styles from "./views.module.css";
 
 const MovieDetailView = (props) => {
   const [movie, setMovie] = useState("");
-  const [credits, setCredits] = useState(null);
   const { movieId } = useParams();
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
-    getIdMovies(movieId).then(setMovie);
-  }, [movieId]);
-
-  useEffect(() => {
-    getCast(movieId).then(setCredits);
+    getIdMovies(movieId).then(setMovie).catch(toast.error("Not found!"));
   }, [movieId]);
 
   const onGoBack = () => {
     history.goBack();
+    // history.push(location.state?.from ?? "/")
   };
 
   return (
