@@ -4,12 +4,11 @@ import {
   Link,
   useParams,
   useHistory,
-  useLocation,
   Switch,
   Route,
   useRouteMatch,
 } from "react-router-dom";
-import { getIdMovies, getCast } from "../Api/moviesApi";
+import { getIdMovies } from "../Api/moviesApi";
 import PageHeading from "../components/PageHeading/PageHeading";
 import { toast } from "react-toastify";
 import styles from "./views.module.css";
@@ -20,7 +19,6 @@ const MovieDetailView = () => {
   const [movie, setMovie] = useState("");
   const { movieId } = useParams();
   const history = useHistory();
-  const location = useLocation();
   const { path, url } = useRouteMatch();
 
   useEffect(() => {
@@ -63,20 +61,16 @@ const MovieDetailView = () => {
         </>
       )}
       <hr />
-
       <Link className={styles.contentLink} to={`${url}/cast`}>
         Cast
       </Link>
       <Link className={styles.contentLink} to={`${url}/reviews`}>
         Reviews
       </Link>
-
-      {/* <Switch>
-          <Route path={path} />         
-          <Route path={`${path}/:cast`}  component={Credit} />
-          <Route path={`${path}/:reviews`}  component={Review} />
-          <Route path={`${path}/`} exact component={MovieDetailView} />
-      </Switch> */}
+      <Switch>
+        <Route path={`${path}/cast`} component={Credit} />
+        <Route path={`${path}/reviews`} component={Review} />
+      </Switch>
     </>
   );
 };
