@@ -1,6 +1,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { getReview } from "../../Api/moviesApi";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import styles from "./reviews.module.css";
 
 export default function MovieReviewView() {
@@ -9,7 +10,9 @@ export default function MovieReviewView() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    getReview(movieId).then((data) => setReviews(data.results));
+    getReview(movieId)
+      .then((data) => setReviews(data.results))
+      .catch(toast.error("Not found!"));
   }, [movieId]);
 
   return (

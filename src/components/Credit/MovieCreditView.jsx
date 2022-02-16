@@ -1,6 +1,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { getCast } from "../../Api/moviesApi";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import styles from "./credit.module.css";
 
 export default function MovieCreditView() {
@@ -8,7 +9,9 @@ export default function MovieCreditView() {
   const { movieId } = useParams();
 
   useEffect(() => {
-    getCast(movieId).then((data) => setCast(data));
+    getCast(movieId)
+      .then((data) => setCast(data))
+      .catch(toast.error("Not found!"));
   }, [movieId]);
 
   return (

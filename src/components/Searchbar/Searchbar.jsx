@@ -16,11 +16,10 @@ const Searchbar = () => {
   const query = search ? search.slice(7) : "";
 
   useEffect(() => {
-    console.log(query);
     if (query) {
       getSearch(query)
         .then((data) => setData(data.results))
-        .catch((error) => console.log(error("Not found!")));
+        .catch(toast.error("Not found!"));
     } else if (data) {
       setData([]);
     }
