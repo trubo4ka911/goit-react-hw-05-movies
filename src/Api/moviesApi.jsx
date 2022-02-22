@@ -18,5 +18,5 @@ export function getReview(moviesId) {
   return Api(`${BASE_URL}/movie/${moviesId}/reviews?api_key=${API_KEY}&page=1`);
 }
 export function getSearch(query) {
-  return Api(`${BASE_URL}/search/movie/?api_key=${API_KEY}&query=${query}`);
+  return Api(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`);
 }

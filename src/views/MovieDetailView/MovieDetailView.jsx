@@ -7,18 +7,20 @@ import {
   Switch,
   Route,
   useRouteMatch,
+  useLocation,
 } from "react-router-dom";
-import { getIdMovies } from "../Api/moviesApi";
-import PageHeading from "../components/PageHeading/PageHeading";
+import { getIdMovies } from "../../Api/moviesApi";
+import PageHeading from "../../components/PageHeading/PageHeading";
 import { toast } from "react-toastify";
-import styles from "./views.module.css";
-const Credit = lazy(() => import("../components/Credit/MovieCreditView"));
-const Review = lazy(() => import("../components/Reviews/MovieReviewView"));
+import styles from "./movieDetailView.module.css";
+const Credit = lazy(() => import("../../components/Credit/MovieCreditView"));
+const Review = lazy(() => import("../../components/Reviews/MovieReviewView"));
 
 const MovieDetailView = () => {
   const [movie, setMovie] = useState("");
   const { movieId } = useParams();
   const history = useHistory();
+  const location = useLocation();
   const { path, url } = useRouteMatch();
 
   useEffect(() => {
@@ -26,7 +28,7 @@ const MovieDetailView = () => {
   }, [movieId]);
 
   const onGoBack = () => {
-    history.goBack();
+    history.push(location.state?.from ?? "/");
   };
 
   return (
@@ -61,10 +63,19 @@ const MovieDetailView = () => {
         </>
       )}
       <hr />
-      <Link className={styles.contentLink} to={`${url}/cast`}>
+      <Link
+        className={styles.contentLink}
+        to={{ pathname: `${url}/cast`, state: { from: location.state?.from } }}
+      >
         Cast
       </Link>
-      <Link className={styles.contentLink} to={`${url}/reviews`}>
+      <Link
+        className={styles.contentLink}
+        to={{
+          pathname: `${url}/reviews`,
+          state: { from: location.state?.from },
+        }}
+      >
         Reviews
       </Link>
       <Switch>

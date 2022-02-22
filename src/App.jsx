@@ -4,8 +4,10 @@ import Container from "./components/Container/Container";
 import Navigation from "./components/Navigation/Navigation";
 
 const HomePage = lazy(() => import("./views/HomePage"));
-const MovieDetailView = lazy(() => import("./views/MovieDetailView"));
-const Searchbar = lazy(() => import("./components/Searchbar/Searchbar"));
+const MovieDetailView = lazy(() =>
+  import("./views/MovieDetailView/MovieDetailView")
+);
+const SearchMovies = lazy(() => import("./views/SearchMovies/SearchMovies"));
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/movies" exact component={Searchbar} />
+          <Route path="/movies" exact component={SearchMovies} />
           <Route path="/movies/:movieId" component={MovieDetailView} />
         </Switch>
       </Suspense>
